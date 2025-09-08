@@ -17,4 +17,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . -t thenuker2/weatherforecast_api:latest -f DockerAPITest/Dockerfile
     - name: Push Image to DockerHub
-      run: docker push thenuker2/weatherforecrast_api:latest
+      run: docker push thenuker2/weatherforecast_api:latest
