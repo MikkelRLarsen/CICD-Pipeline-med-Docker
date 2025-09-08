@@ -15,6 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build ./DockerAPITest/ -t thenuker2/weatherforecrast_api:latest
+      run: docker build . -t thenuker2/weatherforecast_api:latest -f DockerAPITest/Dockerfile
     - name: Push Image to DockerHub
       run: docker push thenuker2/weatherforecrast_api:latest
