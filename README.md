@@ -271,7 +271,13 @@ docker run -d   --name watchtower   --restart always   -v /var/run/docker.sock:/
    - Sørg for at `-v /var/run/docker.sock:/var/run/docker.sock` er med.  
 
 4. **Netværksproblemer**  
-   - Test: `docker pull thenuker2/weatherforecast_api:latest` manuelt på serveren.  
+   - Test: `docker pull thenuker2/weatherforecast_api:latest` manuelt på serveren.
+
+5. **Tjek Watchtower logs i realtid:**  
+    ```bash
+    docker logs -f watchtower
+    ```
+    Dette vil vise alle hændelser, opdateringer og fejl (error codes), så du kan se præcis, hvad der går galt.
 
 ---
 
