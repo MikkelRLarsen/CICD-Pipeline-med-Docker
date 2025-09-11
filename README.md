@@ -65,19 +65,20 @@ I dit GitHub repository:
 
 ### 📝 Hvad er GitHub Actions?
 
-**GitHub Actions** er GitHubs indbyggede værktøj til **CI/CD** (Continuous Integration / Continuous Deployment).  
-Det betyder, at man kan automatisere ting som:
+**GitHub Actions** er GitHubs indbyggede værktøj til at automatisere udviklingsarbejdsprocesser direkte i dit repository. Med GitHub Actions kan du:
 
-- Bygning af kode (fx compile dit .NET projekt)
-- Test af kode (fx unit tests)
-- Deployment (fx bygge Docker images og uploade til Docker Hub)
+- Bygge og teste din kode automatisk
+- Udrulle applikationer til produktion
+- Automatisere workflows som f.eks. CI/CD (Continuous Integration / Continuous Deployment)
 
-Man beskriver en workflow-fil i **YAML** (fx `.github/workflows/docker-publish.yml`), hvor man definerer:
-- **Hvornår** noget skal ske (fx når der pushes til `master`)
-- **Hvilke jobs** der skal køres (fx byg Docker image)
-- **Hvilke steps** der udføres (fx `docker build` → `docker push`)
+Workflows defineres i YAML-filer under `.github/workflows` og kan udløses af begivenheder som f.eks. `push`, `pull_request` eller på en tidsplan.
 
-Fordelen er, at det hele sker **automatisk i skyen**, uden at du behøver gøre det manuelt på din egen PC.
+For en grundlæggende introduktion til GitHub Actions, kan du se følgende videoer:
+
+👉 [What is GitHub Actions? - Everything you need to know to get started](https://www.youtube.com/watch?v=jtKrINOzQ3A)
+
+👉 [GitHub Actions Tutorial | From Zero to Hero in 90 minutes](https://www.youtube.com/watch?v=R8_veQiYBjI)
+
 
 
 Lav en fil i dit repo:  
