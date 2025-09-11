@@ -63,6 +63,23 @@ I dit GitHub repository:
 
 ## ⚙️ Trin 4: Opret GitHub Actions workflow
 
+### 📝 Hvad er GitHub Actions?
+
+**GitHub Actions** er GitHubs indbyggede værktøj til **CI/CD** (Continuous Integration / Continuous Deployment).  
+Det betyder, at man kan automatisere ting som:
+
+- Bygning af kode (fx compile dit .NET projekt)
+- Test af kode (fx unit tests)
+- Deployment (fx bygge Docker images og uploade til Docker Hub)
+
+Man beskriver en workflow-fil i **YAML** (fx `.github/workflows/docker-publish.yml`), hvor man definerer:
+- **Hvornår** noget skal ske (fx når der pushes til `master`)
+- **Hvilke jobs** der skal køres (fx byg Docker image)
+- **Hvilke steps** der udføres (fx `docker build` → `docker push`)
+
+Fordelen er, at det hele sker **automatisk i skyen**, uden at du behøver gøre det manuelt på din egen PC.
+
+
 Lav en fil i dit repo:  
 ```
 .github/workflows/docker-publish.yml
