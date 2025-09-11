@@ -124,10 +124,10 @@ Før du sætter Watchtower op, bør du teste at image’et virker lokalt:
 docker build -t thenuker2/weatherforecast_api:latest -f DockerAPITest/Dockerfile .
 
 # kør image lokalt
-docker run -d -p 5000:80 --name weatherapi thenuker2/weatherforecast_api:latest
+docker run -d -p 8080:8080 --name weatherapi thenuker2/weatherforecast_api:latest
 ```
 
-Gå derefter til `http://localhost:5000` i browseren og tjek at dit API/Blazor kører.
+Gå derefter til `http://localhost:8080` i browseren og tjek at dit API/Blazor kører.
 
 ---
 
@@ -149,7 +149,7 @@ services:
     container_name: weatherapi
     restart: always
     ports:
-      - "80:80"
+      - "8080:8080"
 
   watchtower:
     image: containrrr/watchtower
@@ -174,7 +174,7 @@ docker compose up -d
 Start først din app:
 
 ```bash
-docker run -d   --name weatherapi   --restart always   -p 80:80   thenuker2/weatherforecast_api:latest
+docker run -d   --name weatherapi   --restart always   -p 8080:8080   thenuker2/weatherforecast_api:latest
 ```
 
 Start derefter Watchtower:
@@ -204,11 +204,11 @@ docker run -d   --name watchtower   --restart always   -v /var/run/docker.sock:/
 2. **Kald API’et fra din udviklingsmaskine**  
    Åbn browseren eller brug `curl` til at teste:  
    ```bash
-   curl http://192.168.1.45/api/weatherforecast
+   curl http://192.168.1.45:8080/api/weatherforecast
    ```
    eller gå direkte i browseren:
    ```
-   http://192.168.1.45/api/weatherforecast
+   http://192.168.1.45:8080/api/weatherforecast
    ```
 
    Hvis alt er sat korrekt op, vil du nu se dit API’s JSON-output (fx WeatherForecast-data).
@@ -221,7 +221,7 @@ docker run -d   --name watchtower   --restart always   -v /var/run/docker.sock:/
 
    Prøv igen at tilgå:
    ```
-   http://192.168.1.45/api/weatherforecast
+   http://192.168.1.45:8080/api/weatherforecast
    ```
    Du burde nu se ændringen — uden at du selv har genstartet noget manuelt 🎉
 
