@@ -135,6 +135,30 @@ Gå derefter til `http://localhost:8080` i browseren og tjek at dit API/Blazor k
 
 Når din VM er klar med Docker installeret, kan du køre Watchtower **med** eller **uden** docker-compose.
 
+### 🔑 Log ind på Docker Hub på produktionsmaskinen
+
+Før Watchtower kan trække private Docker images, skal du logge ind på Docker Hub på din produktionsmaskine (VM eller server).  
+
+1. Åbn terminalen på produktionsmaskinen.  
+2. Kør følgende kommando:  
+```bash
+docker login
+```
+3. Indtast dit Docker Hub brugernavn og dit **Personal Access Token** som password.  
+4. Hvis login lykkes, vil du se noget i stil med:  
+```
+Login Succeeded
+```
+5. Docker gemmer nu dine credentials typisk i `~/.docker/config.json`.  
+   Denne sti skal mountes ind i Watchtower, så det kan trække og opdatere dit image automatisk:
+```yaml
+volumes:
+  - /var/run/docker.sock:/var/run/docker.sock
+  - /home/ubuntu/.docker:/root/.docker
+```
+
+> Tip: Hvis du ikke logger ind først, vil Watchtower ikke kunne opdatere private Docker images.
+
 ### ✅ Variant 1: Watchtower med docker-compose
 
 Lav en fil på din VM:  
