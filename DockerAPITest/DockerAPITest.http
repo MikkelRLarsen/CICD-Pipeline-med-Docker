@@ -1,6 +1,6 @@
-@DockerAPITest_HostAddress = http://localhost:5113
+@CICD-Pipeline-med-Docker_HostAddress = http://localhost:5113
 
-GET {{DockerAPITest_HostAddress}}/weatherforecast/
+GET {{CICD-Pipeline-med-Docker_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
