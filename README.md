@@ -8,6 +8,7 @@ Dette projekt viser, trin for trin, hvordan man sætter en fuld **CI/CD pipeline
 - **Watchtower** (automatisk opdatering på server/VM)
 
 Målet er, at du kan følge opskriften 1:1, også selvom du aldrig har arbejdet med CI/CD eller Docker før.
+**Vær opmærksom på at Repository hedder CICD-Pipline-med-Docker, men projektet som der arbejdes på hedder DockerAPITest**.
 
 ---
 
