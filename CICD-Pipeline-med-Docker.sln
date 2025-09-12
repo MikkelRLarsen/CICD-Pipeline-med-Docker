@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35913.81 d17.13
+VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerAPITest", "DockerAPITest\DockerAPITest.csproj", "{D5B80645-D0C3-42BF-B55A-E3074A452D94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CICD-Pipeline-med-Docker", "DockerAPITest\CICD-Pipeline-med-Docker.csproj", "{D5B80645-D0C3-42BF-B55A-E3074A452D94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
