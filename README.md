@@ -230,11 +230,11 @@ docker run -d   --name watchtower   --restart always   -v /var/run/docker.sock:/
 2. **Kald API’et fra din udviklingsmaskine**  
    Åbn browseren eller brug `curl` til at teste:  
    ```bash
-   curl http://192.168.1.45:8080/api/weatherforecast
+   curl http://192.168.1.45:8080/weatherforecast
    ```
    eller gå direkte i browseren:
    ```
-   http://192.168.1.45:8080/api/weatherforecast
+   http://192.168.1.45:8080/weatherforecast
    ```
 
    Hvis alt er sat korrekt op, vil du nu se dit API’s JSON-output (fx WeatherForecast-data).
@@ -247,7 +247,7 @@ docker run -d   --name watchtower   --restart always   -v /var/run/docker.sock:/
 
    Prøv igen at tilgå:
    ```
-   http://192.168.1.45:8080/api/weatherforecast
+   http://192.168.1.45:8080/weatherforecast
    ```
    Du burde nu se ændringen — uden at du selv har genstartet noget manuelt 🎉
 
