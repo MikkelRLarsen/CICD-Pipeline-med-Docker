@@ -23,19 +23,19 @@ Eksempel på Dockerfile for et .NET 8 API:
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY . .
-RUN dotnet restore "./CICD-Pipeline-med-Docker/CICD-Pipeline-med-Docker.csproj"
-RUN dotnet publish "./CICD-Pipeline-med-Docker/CICD-Pipeline-med-Docker.csproj" -c Release -o /app/publish
+RUN dotnet restore "./DockerAPITest/DockerAPITest.csproj"
+RUN dotnet publish "./DockerAPITest/DockerAPITest.csproj" -c Release -o /app/publish
 
 # Runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
-ENTRYPOINT ["dotnet", "CICD-Pipeline-med-Docker.dll"]
+ENTRYPOINT ["dotnet", "DockerAPITest.dll"]
 ```
 
 Gem filen som:  
 ```
-CICD-Pipeline-med-Docker/Dockerfile
+DockerAPITest/Dockerfile
 ```
 
 ---
@@ -106,7 +106,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . -t thenuker2/weatherforecast_api:latest -f CICD-Pipeline-med-Docker/Dockerfile
+      run: docker build . -t thenuker2/weatherforecast_api:latest -f DockerAPITest/Dockerfile
     - name: Push Image to DockerHub
       run: |
        docker login -u thenuker2 -p ${{ secrets.DOCKER_HUB_TOKEN }}
@@ -121,7 +121,7 @@ Før du sætter Watchtower op, bør du teste at image’et virker lokalt:
 
 ```bash
 # byg lokalt
-docker build -t thenuker2/weatherforecast_api:latest -f CICD-Pipeline-med-Docker/Dockerfile .
+docker build -t thenuker2/weatherforecast_api:latest -f DockerAPITest/Dockerfile .
 
 # kør image lokalt
 docker run -d -p 8080:8080 --name weatherapi thenuker2/weatherforecast_api:latest
