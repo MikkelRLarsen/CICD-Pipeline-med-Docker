@@ -9,7 +9,7 @@ Dette projekt viser, trin for trin, hvordan man sætter en fuld **CI/CD pipeline
 
 Målet er, at du kan følge opskriften 1:1, også selvom du aldrig har arbejdet med CI/CD eller Docker før.
 
-**Vær opmærksom på at Repository hedder CICD-Pipline-med-Docker, men projektet som der arbejdes på hedder DockerAPITest**.
+**Vær opmærksom på at Repository hedder CICD-Pipline-med-Docker, men projektet som der arbejdes på hedder DockerAPITest og DockerHub image hedder weatherforecast_api**.
 
 ---
 
