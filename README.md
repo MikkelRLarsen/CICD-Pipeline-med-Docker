@@ -1,4 +1,4 @@
-# CI/CD Pipeline med Docker — CI/CD med GitHub Actions, Docker Hub og Watchtower
+# CI/CD Pipeline med Docker — CI/CD med GitHub Actions, Docker Hub og Watchtower.
 
 Dette projekt viser, trin for trin, hvordan man sætter en fuld **CI/CD pipeline** op for et .NET API eller Blazor Server projekt ved hjælp af:
 
