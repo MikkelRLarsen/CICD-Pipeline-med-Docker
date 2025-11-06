@@ -22,7 +22,10 @@ jobs:
 
       - uses: docker/build-push-action@v5
         with:
+          context: .
+          file: DockerAPITest/Dockerfile
           push: true
           tags: |
             thenuker2/weatherforecast_api:latest
             thenuker2/weatherforecast_api:${{ env.TAG }}
+
